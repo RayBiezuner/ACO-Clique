@@ -4,13 +4,14 @@ from vertex import Vertex
 
 alpha = 1
 max_cicles = 100000
+
 def p(v_i : Vertex,Candidates: set[Vertex]):
     denominator = sum(candidate.pheromon_value for candidate in Candidates)
     return v_i.pheromone_value/(denominator**alpha)
 
 def update_pheromone(click,pheromone):
     for vertex in click:
-        vertex.pheromone_valur += pheromone
+        vertex.pheromone_value += pheromone
 
 
 def findClick(G: Graph, num_ants):
