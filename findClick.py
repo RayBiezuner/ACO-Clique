@@ -13,15 +13,14 @@ def update_pheromone(click,pheromone):
         vertex.pheromone_valur += pheromone
 
 
-def findClick(G: Graph):
+def findClick(G: Graph, num_ants):
     Candidates = []
     Click = []
-    largest_click = []
-    Ants = []
+    largest_click = [] 
     i=0
     while i<max_cicles:
         k=0
-        for k in range(len(Ants)):
+        for k in range(num_ants):
             v_i = random.choice(G.vertex) 
             Click[k].append(v_i)
             Candidates = set(Candidates + v_i.expands())
