@@ -3,10 +3,10 @@ from graph import Graph
 from vertex import Vertex
 
 alpha = 1
-max_cicles = 100000
+max_cicles = 100
 
 def p(v_i : Vertex,Candidates: set[Vertex]):
-    denominator = sum(candidate.pheromon_value for candidate in Candidates)
+    denominator = sum(candidate.pheromone_value for candidate in Candidates)
     return v_i.pheromone_value/(denominator**alpha)
 
 def update_pheromone(click,pheromone):
@@ -16,26 +16,34 @@ def update_pheromone(click,pheromone):
 
 def findClick(G: Graph, num_ants):
     Candidates = []
-    Click = []
+    vector_clicks = []
     largest_click = [] 
+    click= []
     i=0
     while i<max_cicles:
+        print(i)
         k=0
         for k in range(num_ants):
-            v_i = random.choice(G.vertex) 
-            Click[k].append(v_i)
-            Candidates = set(Candidates + v_i.expands())
+            v_i = random.choice(G.vertex_list) 
+            click = []
+            click.append(v_i)
+            Candidates = Candidates + v_i.expands()
             while(len(Candidates) != 0):
-                prob = [p(v) for v in Candidates]
+                prob = [p(v,Candidates) for v in Candidates]
                 v_i = random.choices(Candidates,weights = prob, k =1)[0]
-                Click[k].append(v_i)
-                Candidates = Candidates & v_i.expands()
-        for click in Click:
-            pheromone = 1/(1+len(largest_click) - len(click))
-            update_pheromone(click,pheromone)
+                click.append(v_i)
+                Candidates = list(set(Candidates) & set(v_i.expands()))
+            vector_clicks.append(click)
+        
+            
+        for click in vector_clicks:
             if(len(click) > len(largest_click)):
                 largest_click = click
-    i+=1  
+            pheromone = 1/(1+len(largest_click) - len(click))
+            update_pheromone(click,pheromone)
+        i+=1 
+    
+     
     return largest_click
 
     

@@ -3,11 +3,11 @@ from vertex import Vertex
 class Graph:
     def __init__(self, file_name):
         self.vertex_list = []
-        self.create_graph(file_name)
         self.tau_min = 0.01
         self.tau_max = 6
         self.v = 0
         self.e = 0
+        self.create_graph(file_name)
 
     def create_graph(self,file_name):
 
@@ -15,17 +15,18 @@ class Graph:
             for line in f:
                 if line[0] == "p":
                     self.v = int(line.strip().split()[2])
-                    self.vertex_list = [None] * 500
+                    self.vertex_list = [None] * self.v
                     self.e = int(line.strip().split()[3])
                 if line[0] == "e":
                     a = int(line.strip().split()[1])
                     b = int(line.strip().split()[2])
-
+                    a=a-1
+                    b=b-1
                     if self.vertex_list[a] == None:
-                        self.vertex_list[a] = Vertex(0)
+                        self.vertex_list[a] = Vertex(self.tau_max)
 
                     if self.vertex_list[b] == None:
-                        self.vertex_list[b] = Vertex(0)
+                        self.vertex_list[b] = Vertex(self.tau_max)
 
                     self.vertex_list[a].append_adj(self.vertex_list[b])          
                     self.vertex_list[b].append_adj(self.vertex_list[a])
