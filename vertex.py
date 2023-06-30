@@ -7,5 +7,5 @@ class Vertex:
     def expands(self):
         return set(self.adjacency_list)
     
-    def append(self,vertex):
+    def append_adj(self,vertex):
         self.adjacency_list.append(vertex)
