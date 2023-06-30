@@ -1,6 +1,7 @@
+import random
 from graph import Graph
 from vertex import Vertex
-import random
+
 alpha = 1
 max_cicles = 100000
 def p(v_i : Vertex,Candidates: set[Vertex]):
@@ -11,7 +12,7 @@ def update_pheromone(click,pheromone):
     for vertex in click:
         vertex.pheromone_valur += pheromone
 
-        
+
 def findClick(G: Graph):
     Candidates = []
     Click = []
