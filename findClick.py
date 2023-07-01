@@ -3,7 +3,7 @@ from graph import Graph
 from vertex import Vertex
 
 alpha = 1
-max_cicles = 100
+max_cicles = 500
 
 def p(v_i : Vertex,Candidates: set[Vertex]):
     denominator = sum(candidate.pheromone_value for candidate in Candidates)
@@ -21,7 +21,6 @@ def findClick(G: Graph, num_ants):
     click= []
     i=0
     while i<max_cicles:
-        print(i)
         k=0
         for k in range(num_ants):
             v_i = random.choice(G.vertex_list) 
