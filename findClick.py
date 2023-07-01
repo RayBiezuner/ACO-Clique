@@ -1,9 +1,13 @@
 import random
 from graph import Graph
 from vertex import Vertex
+from configuration import *
 
-alpha = 1
-max_cicles = 500
+configuration = Config.get_instance()
+alpha = configuration.parameters["alpha"]
+max_iterations = configuration.parameters["iterations"]
+num_ants = configuration.parameters["num_ants"]
+evaportation_hate = configuration.parameters["evaporation"]
 
 def p(v_i : Vertex,Candidates: set[Vertex]):
     denominator = sum(candidate.pheromone_value for candidate in Candidates)
@@ -14,13 +18,13 @@ def update_pheromone(click,pheromone):
         vertex.pheromone_value += pheromone
 
 
-def findClick(G: Graph, num_ants):
+def findClick(G: Graph):
     Candidates = []
     vector_clicks = []
     largest_click = [] 
     click= []
     i=0
-    while i<max_cicles:
+    while i<max_iterations:
         k=0
         for k in range(num_ants):
             v_i = random.choice(G.vertex_list) 
