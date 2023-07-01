@@ -23,10 +23,10 @@ class Graph:
                     a=a-1
                     b=b-1
                     if self.vertex_list[a] == None:
-                        self.vertex_list[a] = Vertex(self.tau_max)
+                        self.vertex_list[a] = Vertex(self.tau_min)
 
                     if self.vertex_list[b] == None:
-                        self.vertex_list[b] = Vertex(self.tau_max)
+                        self.vertex_list[b] = Vertex(self.tau_min)
 
                     self.vertex_list[a].append_adj(self.vertex_list[b])          
                     self.vertex_list[b].append_adj(self.vertex_list[a])
