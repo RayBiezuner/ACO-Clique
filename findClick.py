@@ -5,6 +5,7 @@ from configuration import *
 
 configuration = Config.get_instance()
 alpha = configuration.parameters["alpha"]
+optimal = configuration.parameters["optimal"]
 max_iterations = configuration.parameters["iterations"]
 num_ants = configuration.parameters["num_ants"]
 evaportation_hate = configuration.parameters["evaporation"]
@@ -23,8 +24,10 @@ def findClick(G: Graph):
     vector_clicks = []
     largest_click = [] 
     click= []
-    i=0
-    while i<max_iterations:
+    it=0
+    while it<max_iterations and len(largest_click) != optimal:
+        if it%10 ==0 :
+            print("Running...")
         k=0
         for k in range(num_ants):
             v_i = random.choice(G.vertex_list) 
@@ -44,9 +47,10 @@ def findClick(G: Graph):
                 largest_click = click
             pheromone = 1/(1+len(largest_click) - len(click))
             update_pheromone(click,pheromone)
-        i+=1 
-    
-     
+        it+=1 
+        
+    print("-"*50)
+    print(f"Numero de iterações: {it}")
     return largest_click
 
     
