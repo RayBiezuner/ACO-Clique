@@ -28,7 +28,7 @@ class Graph:
                     if self.vertex_list[b] == None:
                         self.vertex_list[b] = Vertex(self.tau_min)
 
-                    self.vertex_list[a].append_adj(self.vertex_list[b])          
-                    self.vertex_list[b].append_adj(self.vertex_list[a])
+                    self.vertex_list[a].addNeighbour(self.vertex_list[b])          
+                    self.vertex_list[b].addNeighbour(self.vertex_list[a])
 
                     
