@@ -49,6 +49,7 @@ def findClique(G, ALPHA, MAX_ITERATIONS, NUM_ANTS, EVAPORATION_RATE, OPTIMAL):
 
     largestClique = []
     while it < MAX_ITERATIONS and len(bestClique) != OPTIMAL:
+        #print(it, len(largestClique))
         for k in range(NUM_ANTS):
             v = random.choice(G.vertex_list) 
             clique = []
@@ -91,6 +92,7 @@ def findClique(G, ALPHA, MAX_ITERATIONS, NUM_ANTS, EVAPORATION_RATE, OPTIMAL):
 def run(FILE_NAME, ALPHA, MAX_ITERATIONS, NUM_ANTS, EVAPORATION_RATE, OPTIMAL):
     graph = Graph(FILE_NAME)
     size = len(findClique(graph, ALPHA, MAX_ITERATIONS, NUM_ANTS, EVAPORATION_RATE, OPTIMAL))
+    print("Finished")    
     return size
        
 
