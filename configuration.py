@@ -7,6 +7,7 @@ class Config:
         "alpha":None,
         "evaporation": None,
         "optimal":None
+       ## "seed":None
     }
     @staticmethod
     def get_instance():
@@ -19,6 +20,7 @@ class Config:
             raise Exception("O Config já foi instanciado.")
         else:
             Config.__instance = self
+            ##Config.parameters["seed"] = int(input("Seed: "))
             Config.parameters["iterations"] = int(input("Número máximo de iterações: "))
             Config.parameters["num_ants"] = int(input("Número de formigas: "))
             Config.parameters["optimal"] = int(input("Ótimo esperado: "))
