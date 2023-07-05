@@ -27,7 +27,7 @@ def findClick(G: Graph):
     it=0
     while it<max_iterations and len(largest_click) != optimal:
         if it%10 ==0 :
-            print("Running...")
+            print(f"{it}: Running...")
         k=0
         for k in range(num_ants):
             v_i = random.choice(G.vertex_list) 
