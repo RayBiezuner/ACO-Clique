@@ -30,5 +30,7 @@ class Graph:
 
                     self.vertex_list[a].addNeighbour(self.vertex_list[b])          
                     self.vertex_list[b].addNeighbour(self.vertex_list[a])
-
-                    
+    
+    def restart(self):
+        for vertex in self.vertex_list:
+            vertex.pheromone_value = self.tau_min    
